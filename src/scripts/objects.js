@@ -1,8 +1,10 @@
 /* ENTITIES */
 import { loadAnimationsPlayer } from './anims.js';
 import { Controller } from './controls.js';
+import { Dialog } from './dialog.js';
 
 export const Entity = {
+    dialog: Dialog,
     NPCS: [],
     player: {
         init: function(scene, x, y, poly)
@@ -129,8 +131,9 @@ export const Entity = {
     },
 ///////////////////////////////////////////////////////////////////////// NPC bots
     NPC: {
+        discussions: null,
         dialogueIndex: null,
-        init: function(name, x, y, message1, message2, numberSprite, idleSprite, spritesheet, anims, scene) 
+        init: function(name, x, y, message1, message2, numberSprite, glow, spritesheet, anims, scene) 
         {
             this.x = x;
             this.y = y;
@@ -143,7 +146,7 @@ export const Entity = {
             this.timeToSleep = 999999.9;
             this.timeToDisappear = Math.random() * 74000 + 112000;
             this.visible = true;
-            this.idleSprite = idleSprite;
+            this.glow = glow;
             this.avatar = scene.add.sprite(this.x, this.y, spritesheet, 0).anims.play(anims, true).setDepth(y);
         },
         lookPlayer: function(npc, player) 
@@ -167,25 +170,32 @@ export const Entity = {
                 case 'Shea Stadium' :
                     Entity.NPCS.push(
                     ////employees
-                        new Entity.NPC.init("Benny", 140, 100, "I don't care what anyone says, This couch is comfy.", null, null, 121, 'NPC1', "idleBenny", scene),
-                        new Entity.NPC.init("Ryan", 50, 200, "Who are all these people?", null, 1, 121, 'NPC2', "idleRyan", scene),
-                        new Entity.NPC.init("Becca", 235, 85, "Heyyy! Line for the bar starts here.", "You're actually waiting for the bathroom.", null, 121, 'NPC2', "idleBecca", scene),
-                        new Entity.NPC.init("Sean", 235, 135, "What's up guapo?", "You need anything?", 1, 121, 'NPC2', "idleSean", scene),
-                        new Entity.NPC.init("Nora", 290, 145, "Are you in the last band?", "They are still not here yet.", 1, 121, 'NPC2', "idleNora", scene),
-                        new Entity.NPC.init("Ronayne", 275, 90, "If I hear someone order a Bud Heavy one more time...", null, null, 121, 'NPC2', "idleRodanyne", scene),
-                        new Entity.NPC.init("Dave", 180, 190, "Did you catch the last set?", "They were AMAZING!!! Even better than last night.", 23, 121, 'NPC2', "idleDave", scene),
-                        new Entity.NPC.init("Eric", 293, 117, "Wanna play chess after the show?", null, 1, 121, 'NPC2', "idleEric", scene),
-                        new Entity.NPC.init("Krissy", 100, 115, "Yooo...Welcome to Shea Stadium. IDs out and it's $10 if you're not on the list.", "I'm gonna make some dumplings later.", null, 121, 'NPC2', "idleKrissy", scene),
-                        new Entity.NPC.init("Luke", 290, 170, "First time at Shea?", "Don't think I've seen you around.", 1, 121, 'NPC2', "idleLuke", scene),
+                        new Entity.NPC.init("Benny", 140, 100, "I don't care what anyone says, This couch is comfy.", null, null, false, 'NPC1', "idleBenny", scene),
+                        new Entity.NPC.init("Ryan", 50, 200, "Who are all these people?", null, 1, true, 'NPC2', "idleRyan", scene),
+                        new Entity.NPC.init("Becca", 235, 85, "Heyyy! Line for the bar starts here.", "You're actually waiting for the bathroom.", null, true, 'NPC2', "idleBecca", scene),
+                        new Entity.NPC.init("Sean", 235, 135, "What's up guapo?", "You need anything?", 1, true, 'NPC2', "idleSean", scene),
+                        new Entity.NPC.init("Nora", 290, 145, "Are you in the last band?", "They are still not here yet.", 1, true, 'NPC2', "idleNora", scene),
+                        new Entity.NPC.init("Ronayne", 275, 90, "If I hear someone order a Bud Heavy one more time...", null, null, true, 'NPC2', "idleRodanyne", scene),
+                        new Entity.NPC.init("Dave", 180, 190, "Did you catch the last set?", "They were AMAZING!!! Even better than last night.", 23, true, 'NPC2', "idleDave", scene),
+                        new Entity.NPC.init("Eric", 293, 117, "Wanna play chess after the show?", null, 1, true, 'NPC2', "idleEric", scene),
+                        new Entity.NPC.init("Krissy", 100, 115, "Oh no! I can't remember if I stamped everyone... I would go check, but I can't leave the door...", "Do you mind checking everyone for me?", 1, true, 'NPC2', "idleKrissy", scene),
+                        new Entity.NPC.init("Luke", 290, 170, "First time at Shea?", "Don't think I've seen you around.", 1, true, 'NPC2', "idleLuke", scene),
                     ////band
-                        new Entity.NPC.init("Drummer", 380, 150, "*pat! pa' pat!*", null, null, 165, 'NPC1', "idleDrummer", scene),
-                        new Entity.NPC.init("Bassist", 400, 185, "slap* slap", null, null, 143, 'NPC1', "idleBassist", scene),
-                        new Entity.NPC.init("Guitarist", 330, 140, "Can't you see I'm shredding?", null, null, 154, 'NPC1', "idleGuitarist", scene)
-                    ////// objects
-                        //this.Door1 = new Entity.NPC.init("Guy Blue", 180, 55, "It's locked.", null, null, 'NPC2', "idleRyan", scene);
-                        //this.Door2 = new Entity.NPC.init("Guy Blue", 350, 105, "It's locked.", null, null, 'NPC2', "idleRyan", scene);
-                        //this.Exit = new Entity.NPC.init("Guy Blue", 80, 115, "I don't want to leave just yet.", null, null, 'NPC2', "idleRyan", scene);
+                        new Entity.NPC.init("Drummer", 380, 150, "*pat! pa' pat!*", null, null, false, 'NPC1', "idleDrummer", scene),
+                        new Entity.NPC.init("Bassist", 400, 185, "slap* slap", null, null, false, 'NPC1', "idleBassist", scene),
+                        new Entity.NPC.init("Guitarist", 330, 140, "Can't you see I'm shredding?", null, null, false, 'NPC1', "idleGuitarist", scene)
                     );
+                    Entity.NPC.discussions = {
+                        Ryan: false,
+                        Becca: false,
+                        Sean: false,
+                        Nora: false,
+                        Ronayne: false,
+                        Dave: false,
+                        Eric: false,
+                        Krissy: false,
+                        Luke: false
+                    }
                 break;
             }
         //// set interactive

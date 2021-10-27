@@ -27,9 +27,8 @@ export const Controller = {
         this.SKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         this.DKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         this.WKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-    //// ------------------------- Button interact
-        this.buttonInteract = hud.add.image(880, 470, "interactButton").setOrigin(1, 1).setInteractive()
-        .on('pointerdown', () => {
+    //// ------------------------ interact callback
+        this.interact = () =>{ 
             if (!config.default.showingDialogue) hud.interact(player);
             else if (!config.default.controls.buttonsLocked) 
             {
@@ -40,7 +39,10 @@ export const Controller = {
                 } 
                 else hud.hideDialogue();
             }
-        })
+        }
+    //// ------------------------- Button interact
+        this.buttonInteract = hud.add.image(880, 470, "interactButton").setOrigin(1, 1).setInteractive()
+        .on('pointerdown', () => this.interact())
         .on('pointerover', () => this.buttonInteract.setScale(1.1, 1.1).setPosition(885, 475))
 		.on('pointerout', () => this.buttonInteract.setScale(1, 1).setPosition(880, 470));
         this.buttonStartText = hud.add.text(790, 450, "talk to", {fontFamily: 'ZCOOL QingKe HuangYou'}).setFontSize(17).setOrigin(0.5, 0.5);
@@ -51,30 +53,8 @@ export const Controller = {
             player.direction = null;
             player.moving = false;
         })
-        .on('keydown_ENTER', () => {
-            if (!config.default.showingDialogue) hud.interact(player);
-            else if (!config.default.controls.buttonsLocked) 
-            {
-                if (hud.textDialogue.text !== hud.messageToShow) 
-                {
-                    hud.textDialogue.text = hud.messageToShow;
-                    if (hud.eventTyping !== undefined) hud.eventTyping.remove(false);
-                } 
-                else hud.hideDialogue();
-            }
-        })
-        .on('keydown_SPACE', () => {
-            if (!config.default.showingDialogue) hud.interact(player);
-            else if (!config.default.controls.buttonsLocked) 
-            {
-                if (hud.textDialogue.text !== hud.messageToShow) 
-                {
-                    hud.textDialogue.text = hud.messageToShow;
-                    if (hud.eventTyping !== undefined) hud.eventTyping.remove(false);
-                } 
-                else hud.hideDialogue();
-            }
-        });
+        .on('keydown-ENTER', () => this.interact())
+        .on('keydown-SPACE', () => this.interact());
     /////////////////////////////////////////////////// check device
         let check;
         this.checkDevice = () => {

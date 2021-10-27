@@ -68,70 +68,70 @@ export function loadAnimationsPlayer (scene)
     });
 
     //----------------------------------------     Player Red shirt
-    // scene.anims.create({
-    //     key: "walkRightRed",
-    //     repeat: -1,
-    //     frameRate: 7,
-    //     frames: scene.anims.generateFrameNumbers('redGuy', {
-    //         frames: [14, 15]
-    //     })
-    // });
-    // scene.anims.create({
-    //     key: "walkLeftRed",
-    //     repeat: -1,
-    //     frameRate: 7,
-    //     frames: scene.anims.generateFrameNumbers('redGuy', {
-    //         frames: [12, 13]
-    //     })
-    // });
-    // scene.anims.create({
-    //     key: "walkDownRed",
-    //     repeat: -1,
-    //     frameRate: 10,
-    //     frames: scene.anims.generateFrameNumbers('redGuy', {
-    //         frames: [4, 5, 6, 7]
-    //     })
-    // });
-    // scene.anims.create({
-    //     key: "walkUpRed",
-    //     repeat: -1,
-    //     frameRate: 10,
-    //     frames: scene.anims.generateFrameNumbers('redGuy', {
-    //         frames: [8, 9, 10, 11]
-    //     })
-    // });
-    // scene.anims.create({
-    //     key: "idleDownRed",
-    //     repeat: -1,
-    //     frameRate: 5,
-    //     frames: scene.anims.generateFrameNumbers('redGuy', {
-    //         frames: [0]
-    //     })
-    // });
-    // scene.anims.create({
-    //     key: "idleLeftRed",
-    //     repeat: -1,
-    //     frameRate: 5,
-    //     frames: scene.anims.generateFrameNumbers('redGuy', {
-    //         frames: [1]
-    //     })
-    // });
-    // scene.anims.create({
-    //     key: "idleRightRed",
-    //     repeat: -1,
-    //     frameRate: 5,
-    //     frames: scene.anims.generateFrameNumbers('redGuy', {
-    //         frames: [3]
-    //     })
-    // });
-    // scene.anims.create({
-    //     key: "idleUpRed",
-    //     repeat: -1,
-    //     frameRate: 5,
-    //     frames: scene.anims.generateFrameNumbers('redGuy', {
-    //         frames: [2]
-    //     })
-    // });
+    scene.anims.create({
+        key: "walkRightRed",
+        repeat: -1,
+        frameRate: 7,
+        frames: scene.anims.generateFrameNumbers('redGuy', {
+            frames: [14, 15]
+        })
+    });
+    scene.anims.create({
+        key: "walkLeftRed",
+        repeat: -1,
+        frameRate: 7,
+        frames: scene.anims.generateFrameNumbers('redGuy', {
+            frames: [12, 13]
+        })
+    });
+    scene.anims.create({
+        key: "walkDownRed",
+        repeat: -1,
+        frameRate: 10,
+        frames: scene.anims.generateFrameNumbers('redGuy', {
+            frames: [4, 5, 6, 7]
+        })
+    });
+    scene.anims.create({
+        key: "walkUpRed",
+        repeat: -1,
+        frameRate: 10,
+        frames: scene.anims.generateFrameNumbers('redGuy', {
+            frames: [8, 9, 10, 11]
+        })
+    });
+    scene.anims.create({
+        key: "idleDownRed",
+        repeat: -1,
+        frameRate: 5,
+        frames: scene.anims.generateFrameNumbers('redGuy', {
+            frames: [0]
+        })
+    });
+    scene.anims.create({
+        key: "idleLeftRed",
+        repeat: -1,
+        frameRate: 5,
+        frames: scene.anims.generateFrameNumbers('redGuy', {
+            frames: [1]
+        })
+    });
+    scene.anims.create({
+        key: "idleRightRed",
+        repeat: -1,
+        frameRate: 5,
+        frames: scene.anims.generateFrameNumbers('redGuy', {
+            frames: [3]
+        })
+    });
+    scene.anims.create({
+        key: "idleUpRed",
+        repeat: -1,
+        frameRate: 5,
+        frames: scene.anims.generateFrameNumbers('redGuy', {
+            frames: [2]
+        })
+    });
 /////////////////////////////////////////////////////////////////////////////////////////////////////NPCs
 //////////////// shea stadium
 

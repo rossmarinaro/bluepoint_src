@@ -1,6 +1,7 @@
 import { Entity } from './objects.js';
 import { createSocialMediaMenu } from './socialMedia.js';
 import { Controller } from './controls.js';
+import { GameObjects } from 'phaser';
 
 export class HUD extends Phaser.Scene{
     constructor(){
@@ -345,33 +346,163 @@ export class HUD extends Phaser.Scene{
     }
     interact(player) 
     {
+    ////stop player anims
         player.avatar.anims.stop();
-        let nearest = Entity.minDistance(player);
+    //// player discussions
+        this.discussion = npcName => {
+            switch(npcName)
+            {
+                case 'Ryan': Entity.NPC.discussions.Ryan = true; break;
+                case 'Sean': Entity.NPC.discussions.Sean = true; break;
+                case 'Nora': Entity.NPC.discussions.Nora = true; break;
+                case 'Ronayne': Entity.NPC.discussions.Ronayne = true; break;
+                case 'Dave': Entity.NPC.discussions.Dave = true; break;
+                case 'Eric': Entity.NPC.discussions.Eric = true; break;
+                case 'Luke': Entity.NPC.discussions.Luke = true; break;
+            }
+            if (
+                Entity.NPC.discussions.Ryan === true && 
+                Entity.NPC.discussions.Sean === true && 
+                Entity.NPC.discussions.Nora === true && 
+                Entity.NPC.discussions.Ronayne === true && 
+                Entity.NPC.discussions.Dave === true && 
+                Entity.NPC.discussions.Eric === true && 
+                Entity.NPC.discussions.Luke === true
+            )
+            {
+                this.scene.get('Main').npcGlow.filter(i => {
+                    Entity.NPC.discussions.Becca = true;
+                    if (i.data.list.name === 'Krissy')
+                        i.setVisible(true);
+                })
+            }
+        }
+        let nearest = Entity.minDistance(player);  
+    ////npc discussions 
+        //Entity.dialog(nearest[1].name, Entity.NPC.discussions, this.scene.get('Main'));
+        switch(nearest[1].name)
+        {
+            case 'Krissy': 
+                if (Entity.NPC.discussions.Krissy === false) 
+                { 
+                    Entity.NPC.discussions.Krissy = true;
+                    this.scene.get('Main').npcGlow.forEach(i => i.setVisible(true));
+                    this.scene.get('Main').npcGlow.filter(i => {
+                        if (i.data.list.name === 'Krissy')
+                            i.setVisible(false);
+                    });
+                }
+                if (
+                    Entity.NPC.discussions.Ryan === true && 
+                    Entity.NPC.discussions.Sean === true && 
+                    Entity.NPC.discussions.Nora === true && 
+                    Entity.NPC.discussions.Ronayne === true && 
+                    Entity.NPC.discussions.Dave === true && 
+                    Entity.NPC.discussions.Eric === true && 
+                    Entity.NPC.discussions.Luke === true
+                )
+                {
+                    this.scene.get('Main').npcGlow.filter(i => {
+                        Entity.NPC.discussions.Becca = true;
+                        if (i.data.list.name === 'Krissy')
+                            i.setVisible(false);
+                    });
+                    Entity.NPCS.filter(i => {
+                        if (i.name === 'Krissy')
+                        {
+                            i.message1 = "Thanks so much, you're a lifesaver. Go talk to my bud at the merch booth and he'll hook you up with something on me.";
+                            i.message2 = i.message1;
+                        }
+                    });
+                }
+                break;
+                case 'Ryan':   
+                    if (Entity.NPC.discussions.Krissy === true) this.discussion('Ryan'); 
+                    this.glow = this.scene.get('Main').npcGlow.filter(i => {
+                        if (i.data.list.name === 'Ryan') 
+                            i.setVisible(false);  
+                    });
+                break;
+                case 'Becca': 
+                    if (Entity.NPC.discussions.Becca === true)
+                    {
+                        Entity.NPCS.filter(i => {
+                            if (i.name === 'Becca')
+                            {
+                                i.message1 = "Here, have a free T-shirt. On us.";
+                                i.message2 = i.message1;
+                            }
+                        });
+                        player.shirt = 'Red';
+                        player.avatar.anims.play('idleUpRed', true); 
+                    } 
+                break;
+                case 'Sean': 
+                    if (Entity.NPC.discussions.Krissy === true) this.discussion('Sean'); 
+                    this.glow = this.scene.get('Main').npcGlow.filter(i => {
+                        if (i.data.list.name === 'Sean') 
+                            i.setVisible(false);
+                    });
+                break;
+                case 'Nora': 
+                    if (Entity.NPC.discussions.Krissy === true) this.discussion('Nora'); 
+                    this.glow = this.scene.get('Main').npcGlow.filter(i => {
+                        if (i.data.list.name === 'Nora') 
+                            i.setVisible(false);
+                    });
+                break;
+                case 'Ronayne': 
+                    if (Entity.NPC.discussions.Krissy === true) this.discussion('Ronayne'); 
+                    this.glow = this.scene.get('Main').npcGlow.filter(i => {
+                        if (i.data.list.name === 'Ronayne') 
+                            i.setVisible(false);
+                    });
+                break;
+                case 'Dave': 
+                    if (Entity.NPC.discussions.Krissy === true) this.discussion('Dave'); 
+                    this.glow = this.scene.get('Main').npcGlow.filter(i => {
+                        if (i.data.list.name === 'Dave') 
+                            i.setVisible(false);
+                    });
+                break;
+                case 'Eric': 
+                    if (Entity.NPC.discussions.Krissy === true) this.discussion('Eric'); 
+                    this.glow = this.scene.get('Main').npcGlow.filter(i => {
+                        if (i.data.list.name === 'Eric') 
+                            i.setVisible(false);
+                    });
+                break;
+                case 'Luke': 
+                    if (Entity.NPC.discussions.Krissy === true) this.discussion('Luke'); 
+                    this.glow = this.scene.get('Main').npcGlow.filter(i => {
+                        if (i.data.list.name === 'Luke') 
+                            i.setVisible(false);
+                    });
+                break;
+        }
+    //////////////////////////////////////////////////////////////////////
         if (nearest[0] < player.radiusInteraction) 
         {
             Entity.NPC.dialogueIndex = Entity.NPCS.indexOf(nearest[1]);
             Entity.NPC.lookPlayer(nearest[1], player);
-            // the NPC is awake at the beggining
             this.showDialogue();
             if (nearest[1]["sequence"] === undefined) 
-            { // for non-sequential conversation
+            { 
                 this.textTitle.text = nearest[1]["name"];
                 if (nearest[1].message === 0) 
                 {
                     this.typingEffect(nearest[1]["message1"]);
-                    //this.textDialogue.text=nearest[1]["message1"];
-                    if (nearest[1].message2 !== null && nearest[1].name !== "Guy Blue" && nearest[1].name !== "Krissy") nearest[1].message = 1;
+                //disregard second dialog if player is:
+                    if (nearest[1].message2 !== null && nearest[1].name !== "Guy Blue") nearest[1].message = 1; 
                 } 
                 else if (nearest[1].message === 1) 
                 {
                     this.typingEffect(nearest[1]["message2"]);
-                    //this.textDialogue.text=nearest[1]["message2"];
-                    if (nearest[1].message2 !== null && nearest[1].name !== "Guy Blue" && nearest[1].name !== "Krissy") nearest[1].message = 0;
+                    if (nearest[1].message2 !== null && nearest[1].name !== "Guy Blue") nearest[1].message = 0;
                 }
             } 
             else 
-            { //for sequential conversations
-
+            {
                 this.sequentialText = true;
                 this.textTitle.text = nearest[1]["sequence"]["name1"];
                 this.nextText = {
@@ -381,7 +512,6 @@ export class HUD extends Phaser.Scene{
                 if (nearest[1].sequence.message === 0) 
                 {
                     this.typingEffect(nearest[1]["sequence"]["msg1_1"]);
-                    //this.textDialogue.text=nearest[1]["sequence"]["msg1_1"];
                     this.nextText = {
                         title: nearest[1]["sequence"]["name2"],
                         message: nearest[1]["sequence"]["msg2_1"]
@@ -390,7 +520,6 @@ export class HUD extends Phaser.Scene{
                 } 
                 else 
                 {
-                    //this.textDialogue.text=nearest[1]["sequence"]["msg1_2"];
                     this.typingEffect(nearest[1]["sequence"]["msg1_2"]);
                     this.nextText = {
                         title: nearest[1]["sequence"]["name2"],

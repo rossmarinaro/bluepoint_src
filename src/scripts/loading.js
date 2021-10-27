@@ -3,6 +3,7 @@
     import black from '../assets/images/level_1/black.png';
     import background_1 from '../assets/images/level_1/base1.png';
     import blueGuy from '../assets/images/level_1/guy blue sprites.png';
+    import redGuy from '../assets/images/level_1/red guy blue sprites.png';
     import NPC1 from '../assets/images/level_1/NPC sprites.png';
     import NPC2 from '../assets/images/level_1/NPC sprites2.png';
     import drums from '../assets/images/level_1/drums.png';
@@ -17,6 +18,9 @@
     import shareIcon from '../assets/images/pngwave.png';
     import copyIcon from '../assets/images/copy.png';
     import hambugerIcon from '../assets/images/Hamburger_icon.png';
+    import discoBall from '../assets/images/level_1/disco ball.png';
+    import npcGlow from '../assets/images/npc_glow.png';
+    import doorGlow from '../assets/images/door_glow.png';
     import pluginUrl from /* 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js' */ '../plugins/joystick.js';
     
     let files_main_loaded = false;
@@ -26,11 +30,13 @@
         scene.load.image('audio_icon', audio_icon);
         scene.load.image("black", black);
         scene.load.image("background_1", background_1);
+        scene.load.image('npcGlow', npcGlow);
+        scene.load.image('doorGlow', doorGlow);
         //scene.load.image("background_2", "./assets/images/level_1/base2.png");
         //scene.load.image("bloom", "./assets/images/level_1/lights_bloom.png");
         //scene.load.image("whiteSquare", "./assets/images/level_1/white_square.png");
-        //scene.load.spritesheet("discoBall", "./assets/images/level_1/disco ball.png", {frameWidth: 36, frameHeight: 36}); 
-    //ball
+        scene.load.spritesheet('discoBall', discoBall, {frameWidth: 36, frameHeight: 36}); 
+        scene.load.spritesheet('redGuy', redGuy, {frameWidth: 36, frameHeight: 36}); 
         scene.load.spritesheet('blueGuy', blueGuy, {frameWidth: 36, frameHeight: 36}); 
     // blue character
         //scene.load.spritesheet("redGuy", "./assets/images/level_1/red guy blue sprites.png", {frameWidth: 36, frameHeight: 36}); 
@@ -253,8 +259,8 @@ export class Loading extends Phaser.Scene{
     }
     create(){
         this.game.sound.stopAll();
-       console.log(config.default);
-       this.scene.start('Main');
+        //console.log(config.default);
+        this.scene.start('Main');
     }
 }
 
