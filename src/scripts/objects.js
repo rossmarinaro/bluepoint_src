@@ -170,7 +170,7 @@ export const Entity = {
                 case 'Shea Stadium' :
                     Entity.NPCS.push(
                     ////employees
-                        new Entity.NPC.init("Benny", 140, 100, "I don't care what anyone says, This couch is comfy.", null, null, false, 'NPC1', "idleBenny", scene),
+                        new Entity.NPC.init("Benny", 140, 100, "I don't care what anyone says, This couch is comfy.", null, null, true, 'NPC1', "idleBenny", scene),
                         new Entity.NPC.init("Ryan", 50, 200, "Who are all these people?", null, 1, true, 'NPC2', "idleRyan", scene),
                         new Entity.NPC.init("Becca", 235, 85, "Heyyy! Line for the bar starts here.", "You're actually waiting for the bathroom.", null, true, 'NPC2', "idleBecca", scene),
                         new Entity.NPC.init("Sean", 235, 135, "What's up guapo?", "You need anything?", 1, true, 'NPC2', "idleSean", scene),
@@ -186,6 +186,7 @@ export const Entity = {
                         new Entity.NPC.init("Guitarist", 330, 140, "Can't you see I'm shredding?", null, null, false, 'NPC1', "idleGuitarist", scene)
                     );
                     Entity.NPC.discussions = {
+                        Benny: false,
                         Ryan: false,
                         Becca: false,
                         Sean: false,

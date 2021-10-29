@@ -32,8 +32,8 @@ export class Main extends Phaser.Scene{
         this.glowingPlayers = Entity.NPCS.filter(npc => npc.glow === true); 
 
     //// set invisible by default and attach npc name to sprite data
-        this.npcGlow = this.glowingPlayers.map(npc => this.add.sprite(npc.x + 2, npc.y + 12, 'npcGlow').setData({name: npc.name}).setAlpha(0).setVisible(false));
-        this.glowTween = this.tweens.add({targets: this.npcGlow, alpha: 0.7, duration: 1200, hold: 500, ease: 'Sine.easeIn', repeat: -1, yoyo: true});
+        this.npcGlow = this.glowingPlayers.map(npc => this.add.sprite(npc.name === 'Benny' ? npc.x - 5 : npc.x, npc.y + 14, 'npcGlow').setData({name: npc.name}).setTint(0xffff00).setAlpha(0).setVisible(false));
+        this.glowTween = this.tweens.add({targets: this.npcGlow, alpha: 0.7, duration: 800, hold: 200, ease: 'Sine.easeIn', repeat: -1, yoyo: true});
 
     //// set NPC "Krissy" to initial glow
         this.npcGlow.filter(glow =>{

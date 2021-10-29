@@ -359,6 +359,7 @@ export class HUD extends Phaser.Scene{
                 case 'Dave': Entity.NPC.discussions.Dave = true; break;
                 case 'Eric': Entity.NPC.discussions.Eric = true; break;
                 case 'Luke': Entity.NPC.discussions.Luke = true; break;
+                case 'Benny': Entity.NPC.discussions.Benny = true; break;
             }
             if (
                 Entity.NPC.discussions.Ryan === true && 
@@ -367,11 +368,11 @@ export class HUD extends Phaser.Scene{
                 Entity.NPC.discussions.Ronayne === true && 
                 Entity.NPC.discussions.Dave === true && 
                 Entity.NPC.discussions.Eric === true && 
-                Entity.NPC.discussions.Luke === true
+                Entity.NPC.discussions.Luke === true &&
+                Entity.NPC.discussions.Benny === true
             )
             {
                 this.scene.get('Main').npcGlow.filter(i => {
-                    Entity.NPC.discussions.Becca = true;
                     if (i.data.list.name === 'Krissy')
                         i.setVisible(true);
                 })
@@ -379,7 +380,6 @@ export class HUD extends Phaser.Scene{
         }
         let nearest = Entity.minDistance(player);  
     ////npc discussions 
-        //Entity.dialog(nearest[1].name, Entity.NPC.discussions, this.scene.get('Main'));
         switch(nearest[1].name)
         {
             case 'Krissy': 
@@ -392,6 +392,7 @@ export class HUD extends Phaser.Scene{
                             i.setVisible(false);
                     });
                 }
+            //// after all npc discussions
                 if (
                     Entity.NPC.discussions.Ryan === true && 
                     Entity.NPC.discussions.Sean === true && 
@@ -402,19 +403,33 @@ export class HUD extends Phaser.Scene{
                     Entity.NPC.discussions.Luke === true
                 )
                 {
-                    this.scene.get('Main').npcGlow.filter(i => {
-                        Entity.NPC.discussions.Becca = true;
-                        if (i.data.list.name === 'Krissy')
-                            i.setVisible(false);
-                    });
                     Entity.NPCS.filter(i => {
                         if (i.name === 'Krissy')
                         {
-                            i.message1 = "Thanks so much, you're a lifesaver. Go talk to my bud at the merch booth and he'll hook you up with something on me.";
-                            i.message2 = i.message1;
+                            if (player.shirt === 'Red')
+                            {
+                                i.message1 = "Oh wow that looks so good on you!";
+                                i.message2 = i.message1;
+                            }
+                            else {
+                                this.scene.get('Main').npcGlow.filter(i => {
+                                    if (i.data.list.name === 'Krissy')
+                                        i.setVisible(false);
+                                });
+                                i.message1 = "Thanks so much, you're a lifesaver. Go talk to my bud at the merch booth and he'll hook you up with something on me.";
+                                i.message2 = i.message1;
+                                Entity.NPC.discussions.Becca = true;
+                            }
                         }
                     });
                 }
+                break;
+                case 'Benny': 
+                    if (Entity.NPC.discussions.Krissy === true) this.discussion('Benny'); 
+                    this.glow = this.scene.get('Main').npcGlow.filter(i => {
+                        if (i.data.list.name === 'Benny') 
+                            i.setVisible(false);
+                    });
                 break;
                 case 'Ryan':   
                     if (Entity.NPC.discussions.Krissy === true) this.discussion('Ryan'); 
@@ -424,7 +439,7 @@ export class HUD extends Phaser.Scene{
                     });
                 break;
                 case 'Becca': 
-                    if (Entity.NPC.discussions.Becca === true)
+                    if (Entity.NPC.discussions.Becca === true && player.shirt !== 'Red')
                     {
                         Entity.NPCS.filter(i => {
                             if (i.name === 'Becca')
@@ -436,6 +451,16 @@ export class HUD extends Phaser.Scene{
                         player.shirt = 'Red';
                         player.avatar.anims.play('idleUpRed', true); 
                     } 
+                    else if (player.shirt === 'Red') 
+                    {
+                        Entity.NPCS.filter(i => {
+                            if (i.name === 'Becca')
+                            {
+                                i.message1 = "Looking good.";
+                                i.message2 = i.message1;
+                            }
+                        });
+                    }
                 break;
                 case 'Sean': 
                     if (Entity.NPC.discussions.Krissy === true) this.discussion('Sean'); 
