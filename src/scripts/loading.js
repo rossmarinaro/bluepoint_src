@@ -244,6 +244,7 @@ export class Loading extends Phaser.Scene{
     }
     preload()    
     { 
+        
         this.loadingText = this.add.text(444, 260, "Loading Bluepoint ", {fontFamily: 'euroStyle', fontSize: 50}).setOrigin(0.5);
         this.loadingTween = this.tweens.add({targets: this.loadingText,alpha: 0, duration: 2000, ease: 'Sine.easeInOut', loop: -1, yoyo: true});
         LOAD_MAIN(this); 
@@ -253,11 +254,14 @@ export class Loading extends Phaser.Scene{
         this.loadingText.destroy();
         this.loadingTween.stop();
 
-        this.description = `        This game was created in collaboration with Shea Stadium.\n\n
-        The characters you interact with are based on staff and regulars,\n\n
-        with dialogue contributed by their real life counterparts.\n\n
-        This game is a love letter to the DIY spaces we've loved and lost.\n\n\n
-                     We hope it leaves you missing them more.`;
+        this.rect = new Phaser.Geom.Rectangle(0, 0, this.cameras.main.width, this.cameras.main.height);
+        this.add.graphics({fillStyle: {color: 0x000000}}).fillRectShape(this.rect);
+
+        this.description = `                    This game was created in collaboration with Shea Stadium.\n\n
+                The characters you interact with are based on staff and regulars,\n\n
+                    with dialogue contributed by their real life counterparts.\n\n
+                This game is a love letter to the DIY spaces we've loved and lost.\n\n\n
+                                    We hope it leaves you missing them more.`;
 
         this.descriptionText = this.add.text(400, 260, this.description, {fontFamily: 'ZCOOL QingKe HuangYou', fontSize: 25, fontColor: 0xffffff}).setOrigin(0.5);
         this.tweens.add({targets: this.descriptionText, alpha: 0, duration: 1000, ease: 'Sine.easeInOut', delay: 8000, onComplete: ()=>{
@@ -265,7 +269,7 @@ export class Loading extends Phaser.Scene{
                 this.scene.start('Main');
                 this.scene.stop('Loading');
             }
-        });
+        });  
     }
 } 
 
