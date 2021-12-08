@@ -8,11 +8,11 @@ import { Controller } from './controls.js';
 
 const config = {
 	scale: {
-        mode: Phaser.Scale.FIT, //RESIZE
+        mode: Phaser.Scale.FIT,
 		parent : 'gameContainer',
 		autoCenter: Phaser.Scale.CENTER_BOTH,	
-		width: 888, //innerWidth
-		height: 520 //innerHeight
+		width: 888, 
+		height: 520
 	},
 	dom: {
         createContainer: true
@@ -25,13 +25,12 @@ const config = {
             debug: true
         }      
     },
+	backgroundColor: 0x000000,
 	pixelArt: true,
 	type: Phaser.CANVAS,
 	scene: [ Loading, Main, HUD ],
 	initialTime: 10,
 	transparent: true,
-	//timeStartGame: 68000,
-    //timeEndGame: 142000,
 	gameState: false,
 	showingDialogue: false,
 	instructionText: null,
