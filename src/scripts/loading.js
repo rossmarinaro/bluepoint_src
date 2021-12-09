@@ -1,4 +1,5 @@
     
+        
     import audio_icon from '../assets/images/level_1/unmute-icon-12.png'
     import black from '../assets/images/level_1/black.png';
     import background_1 from '../assets/images/level_1/base1.png';
@@ -257,14 +258,14 @@ export class Loading extends Phaser.Scene{
         this.rect = new Phaser.Geom.Rectangle(0, 0, this.cameras.main.width, this.cameras.main.height);
         this.add.graphics({fillStyle: {color: 0x000000}}).fillRectShape(this.rect);
 
-        this.description = `                    This game was created in collaboration with Shea Stadium.\n\n
-                The characters you interact with are based on staff and regulars,\n\n
-                    with dialogue contributed by their real life counterparts.\n\n
+        this.description = `                    This game was created in collaboration with Shea Stadium.
+                The characters you interact with are based on staff and regulars,
+                    with dialogue contributed by their real life counterparts.
                 This game is a love letter to the DIY spaces we've loved and lost.\n\n\n
                                     We hope it leaves you missing them more.`;
 
         this.descriptionText = this.add.text(400, 260, this.description, {fontFamily: 'ZCOOL QingKe HuangYou', fontSize: 25, fontColor: 0xffffff}).setOrigin(0.5);
-        this.tweens.add({targets: this.descriptionText, alpha: 0, duration: 1000, ease: 'Sine.easeInOut', delay: 8000, onComplete: ()=>{
+        this.tweens.add({targets: this.descriptionText, alpha: 0, duration: 1000, ease: 'Sine.easeInOut', delay: 11000, onComplete: ()=>{
                 this.game.sound.stopAll();
                 this.scene.start('Main');
                 this.scene.stop('Loading');
@@ -272,5 +273,8 @@ export class Loading extends Phaser.Scene{
         });  
     }
 } 
+
+
+
 
 
