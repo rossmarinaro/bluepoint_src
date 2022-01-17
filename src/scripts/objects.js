@@ -178,7 +178,7 @@ export const Entity = {
                         new Entity.NPC.init("Ronayne", 275, 90, "If I hear someone order a Bud Heavy one more time...", null, null, true, 'NPC2', "idleRodanyne", scene),
                         new Entity.NPC.init("Dave", 180, 190, "Did you catch the last set?", "They were AMAZING!!! Even better than last night.", 23, true, 'NPC2', "idleDave", scene),
                         new Entity.NPC.init("Eric", 293, 117, "Wanna play chess after the show?", null, 1, true, 'NPC2', "idleEric", scene),
-                        new Entity.NPC.init("Krissy", 100, 115, "Oh no! I can't remember if I stamped everyone... I would go check, but I can't leave the door...", "Do you mind checking everyone for me?", 1, true, 'NPC2', "idleKrissy", scene),
+                        new Entity.NPC.init("Krissy", 100, 115, "Oh no! I can't remember if I stamped everyone... I would go check, but I can't leave the door...Do you mind checking everyone for me?", "Do you mind checking everyone for me?", 1, true, 'NPC2', "idleKrissy", scene),
                         new Entity.NPC.init("Luke", 290, 170, "First time at Shea?", "Don't think I've seen you around.", 1, true, 'NPC2', "idleLuke", scene),
                     ////band
                         new Entity.NPC.init("Drummer", 380, 150, "*pat! pa' pat!*", null, null, false, 'NPC1', "idleDrummer", scene),

@@ -1,5 +1,4 @@
     
-        
     import audio_icon from '../assets/images/level_1/unmute-icon-12.png'
     import black from '../assets/images/level_1/black.png';
     import background_1 from '../assets/images/level_1/base1.png';
@@ -265,7 +264,7 @@ export class Loading extends Phaser.Scene{
                                     We hope it leaves you missing them more.`;
 
         this.descriptionText = this.add.text(400, 260, this.description, {fontFamily: 'ZCOOL QingKe HuangYou', fontSize: 25, fontColor: 0xffffff}).setOrigin(0.5);
-        this.tweens.add({targets: this.descriptionText, alpha: 0, duration: 1000, ease: 'Sine.easeInOut', delay: 11000, onComplete: ()=>{
+        this.tweens.add({targets: this.descriptionText, alpha: 0, duration: 1000, ease: 'Sine.easeInOut', delay:1 /* 11000 */, onComplete: ()=>{
                 this.game.sound.stopAll();
                 this.scene.start('Main');
                 this.scene.stop('Loading');
@@ -273,8 +272,5 @@ export class Loading extends Phaser.Scene{
         });  
     }
 } 
-
-
-
 
 
