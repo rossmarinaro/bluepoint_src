@@ -186,15 +186,15 @@ export class HUD extends Phaser.Scene{
             config.default.instructionText.visible = true;
             config.default.controls.joystickLocked = false;
             config.default.controls.buttonsLocked = false;
-            this.time.delayedCall(3000, () => {
-                config.default.textInstruction.setVisible(false);
-                config.default.instructionText.setVisible(false);
-                if (config.default.joyStick !== undefined) 
-                {
-                    config.default.joyStick.thumb.setVisible(false);
-                    config.default.joyStick.base.setVisible(false);
-                }
-            });
+            // this.time.delayedCall(3000, () => {
+            //     config.default.textInstruction.setVisible(false);
+            //     config.default.instructionText.setVisible(false);
+            //     if (config.default.joyStick !== undefined) 
+            //     {
+            //         config.default.joyStick.thumb.setVisible(false);
+            //         config.default.joyStick.base.setVisible(false);
+            //     }
+            // });
         });
     }
     update(t, delta) 
@@ -346,6 +346,13 @@ export class HUD extends Phaser.Scene{
     }
     interact(player) 
     {
+        config.default.textInstruction.setVisible(false);
+        config.default.instructionText.setVisible(false);
+        if (config.default.joyStick !== undefined) 
+        {
+            config.default.joyStick.thumb.setVisible(false);
+            config.default.joyStick.base.setVisible(false);
+        }
     ////stop player anims
         player.avatar.anims.stop();
     //// player discussions

@@ -264,12 +264,17 @@ export class Loading extends Phaser.Scene{
                                     We hope it leaves you missing them more.`;
 
         this.descriptionText = this.add.text(400, 260, this.description, {fontFamily: 'ZCOOL QingKe HuangYou', fontSize: 25, fontColor: 0xffffff}).setOrigin(0.5);
-        this.tweens.add({targets: this.descriptionText, alpha: 0, duration: 1000, ease: 'Sine.easeInOut', delay:1 /* 11000 */, onComplete: ()=>{
-                this.game.sound.stopAll();
-                this.scene.start('Main');
-                this.scene.stop('Loading');
-            }
-        });  
+        this.tweens.add({targets: this.descriptionText, alpha: 0, duration: 1000, ease: 'Sine.easeInOut', delay: 11000, onComplete: ()=> this.start()}); 
+        this.add.graphics({fillStyle: {color: 0xC6C6C6, alpha: 1}}).fillRoundedRect(380, 420, 120, 50, 20);
+        this.add.graphics({lineStyle: {width: 3, color: 0x595959, alpha: 1}}).strokeRoundedRect(380, 420, 120, 50, 20);
+        this.add.text(400, 432, 'START', {fontFamily: 'euroStyle', fontSize: 24, fontColor: 0x000000});
+        this.add.zone(400, 432).setSize(380, 420).setInteractive().on('pointerdown', ()=> this.start());
+    }
+    start()
+    {
+        this.game.sound.stopAll();
+        this.scene.start('Main');
+        this.scene.stop('Loading');
     }
 } 
 

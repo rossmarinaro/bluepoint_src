@@ -66,8 +66,8 @@ const config = {
             scene.time.paused = false
             scene.scene.resume();
         });
-		config.textInstruction = hud.add.text(450, 420, "", {fontFamily: 'ZCOOL QingKe HuangYou'}).setFontSize(20).setOrigin(0.5, 0.5);
-		config.instructionText = hud.add.text(300, 450, "", {fontFamily: 'ZCOOL QingKe HuangYou',fontSize: 30, align: 'center'});
+		config.textInstruction = hud.add.text(445, 420, "", {fontFamily: 'ZCOOL QingKe HuangYou'}).setFontSize(20).setOrigin(0.5, 0.5);
+		config.instructionText = hud.add.text(270, 450, "", {fontFamily: 'ZCOOL QingKe HuangYou',fontSize: 30, align: 'center'});
 	//-------------------------------------------------------------------------MOBILE
 		if (config.mobileAndTabletCheck()) 
 		{ 
