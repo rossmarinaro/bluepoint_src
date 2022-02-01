@@ -1,112 +1,7 @@
-    
-    import audio_icon from '../assets/images/level_1/unmute-icon-12.png'
-    import black from '../assets/images/level_1/black.png';
-    import background_1 from '../assets/images/level_1/base1.png';
-    import blueGuy from '../assets/images/level_1/guy blue sprites.png';
-    import redGuy from '../assets/images/level_1/red guy blue sprites.png';
-    import NPC1 from '../assets/images/level_1/NPC sprites.png';
-    import NPC2 from '../assets/images/level_1/NPC sprites2.png';
-    import drums from '../assets/images/level_1/drums.png';
-    import table from '../assets/images/level_1/table.png';
-    import speakers from '../assets/images/level_1/speakers.png';
-    import messageBoard from '../assets/images/level_1/dialogue window rectangle.png';
-    import startButton from '../assets/images/level_1/start_button.png';
-    import interactButton from '../assets/images/level_1/interact_button.png';
-    import no_vision from '../assets/audio/No Vision.mp3';
-    import facebook from '../assets/images/facebook.png';
-    import twitter from '../assets/images/twitter.png';
-    import shareIcon from '../assets/images/pngwave.png';
-    import copyIcon from '../assets/images/copy.png';
-    import hambugerIcon from '../assets/images/Hamburger_icon.png';
-    import discoBall from '../assets/images/level_1/disco ball.png';
-    import npcGlow from '../assets/images/npc_glow.png';
-    import doorGlow from '../assets/images/door_glow.png';
+
+    import main_resources from '../assets/resources.json';
     import pluginUrl from /* 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js' */ '../plugins/joystick.js';
     
-    let files_main_loaded = false;
-    function LOAD_MAIN(scene) 
-    {
-        if (files_main_loaded) return;
-        scene.load.image('audio_icon', audio_icon);
-        scene.load.image("black", black);
-        scene.load.image("background_1", background_1);
-        scene.load.image('npcGlow', npcGlow);
-        scene.load.image('doorGlow', doorGlow);
-        //scene.load.image("background_2", "./assets/images/level_1/base2.png");
-        //scene.load.image("bloom", "./assets/images/level_1/lights_bloom.png");
-        //scene.load.image("whiteSquare", "./assets/images/level_1/white_square.png");
-        scene.load.spritesheet('discoBall', discoBall, {frameWidth: 36, frameHeight: 36}); 
-        scene.load.spritesheet('redGuy', redGuy, {frameWidth: 36, frameHeight: 36}); 
-        scene.load.spritesheet('blueGuy', blueGuy, {frameWidth: 36, frameHeight: 36}); 
-    // blue character
-        //scene.load.spritesheet("redGuy", "./assets/images/level_1/red guy blue sprites.png", {frameWidth: 36, frameHeight: 36}); 
-    // blue character
-        //scene.load.spritesheet("collapsingRed", "./assets/images/level_1/collapsing_red.png", {frameWidth: 36, frameHeight: 36});
-       // scene.load.spritesheet("collapsingBlue", "./assets/images/level_1/collapsing_blue.png", {frameWidth: 36, frameHeight: 36});
-        scene.load.spritesheet('NPC1', NPC1, { frameWidth: 36, frameHeight: 36});
-        scene.load.spritesheet('NPC2', NPC2, { frameWidth: 32, frameHeight: 32});// scene.load.spritesheet("NPC2", "./assets/images/level_1/NPC sprites2.png", { frameWidth: 30, frameHeight: 30});
-    // NPC
-        scene.load.image('drums', drums); //Objects
-        scene.load.image("table", table);
-        scene.load.image("speakers", speakers);
-        scene.load.image("messageBoard", messageBoard); // dialogue window       
-        scene.load.image("startButton", startButton); // start button       
-        scene.load.image("interactButton", interactButton); // interact window       
-        //scene.load.spritesheet("ZZZIcon", "./assets/images/level_1/white z.png", {frameWidth: 36, frameHeight: 36});
-        //scene.load.audio("outro", "./assets/audio/Bluepoint Outro Music.mp3");
-        scene.load.audio("no_vision", no_vision);
-        //scene.load.audio("song", "./assets/audio/Gutted.mp3");
-//////////////////////////////////////////////////////////////
-    //loads all the assets from the complete game
-        //this.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
-        //scene.load.html('form', './scripts/form.html');
-    // initial screen
-        //scene.load.image("guttedText", "./assets/images/main/Lvl 1_and_name_updated.png");
-        //scene.load.image("bluepointLogo", "./assets/images/main/logo_updated.png");
-    // social media icons
-        scene.load.image("facebook", facebook);
-        scene.load.image("twitter", twitter);
-        scene.load.image("shareIcon", shareIcon);
-        scene.load.image("copyIcon", copyIcon);
-        scene.load.image("hambugerIcon", hambugerIcon);
-    //map
-    //     scene.load.image("map_trees", "./assets/images/map/trees.png");
-    //     scene.load.image("map_logo", "./assets/images/map/map_logo.png");
-    //     //
-    //     scene.load.image("map_golden_road", "./assets/images/map/golden_20road_20.png");
-    //     scene.load.image("map_golden_road_grey", "./assets/images/map/golden road  grey.png");
-    //     scene.load.image("map_golden_road_glow", "./assets/images/map/golden road  grey_glow.png");
-    //     //
-    //     scene.load.image("map_204_grey", "./assets/images/map/building_204_20grey.png");
-    //     scene.load.image("map_204_glow", "./assets/images/map/building_204_20grey_glow.png");
-    //     scene.load.image("map_204_color", "./assets/images/map/building_204_20color.png");
-    //     //
-    //     scene.load.image("map_203_grey", "./assets/images/map/building_203_20grey.png");
-    //     scene.load.image("map_203_glow", "./assets/images/map/building_203_20grey_glow.png");
-    //     scene.load.image("map_203_color", "./assets/images/map/building_203_20color.png");
-    //     //
-    //     scene.load.image("map_202_grey", "./assets/images/map/building_202_20grey.png");
-    //     scene.load.image("map_202_glow", "./assets/images/map/building_202_20grey_glow.png");
-    //     scene.load.image("map_202_color", "./assets/images/map/building_202_20color.png");
-    //     //
-    //     scene.load.image("map_201_grey", "./assets/images/map/building_201_20grey.png");
-    //     scene.load.image("map_201_glow", "./assets/images/map/building_201_20grey_glow.png");
-    //     scene.load.image("map_201_color", "./assets/images/map/building_201_20color.png");
-    //     //
-    //     scene.load.image("map_bridge_grey", "./assets/images/map/bridge_20grey.png");
-    //     scene.load.image("map_bridge_glow", "./assets/images/map/bridge_20grey_glow.png");
-    //     scene.load.image("map_bridge_color", "./assets/images/map/bridge_20color.png");
-    //     //
-    //     scene.load.image("map_base", "./assets/images/map/base.png");
-    // //// audio
-    //     scene.load.audio("map_music", "./assets/audio/Bluepoint Menu Theme.mp3");
-    //     scene.load.audio("map_select", "./assets/audio/map select sound.mp3");
-    ////plugins
-        //if (config.default.mobileAndTabletCheck()) {
-            scene.load.plugin('rexvirtualjoystickplugin', pluginUrl, true);
-        //}
-    files_main_loaded = true;
-}
 
 
 // let files_level_2_loaded = false;
@@ -235,7 +130,20 @@
 //     files_level_2_loaded = true;
 // }
 
-
+export class Boot extends Phaser.Scene {
+    constructor(){
+        super('Boot');
+    }
+    preload() 
+    {
+        this.load.json('main_resources', main_resources);
+    }
+    create()
+    {
+        this.scene.start('Loading');
+        this.scene.stop('Boot');
+    }
+}
 
 //////////////////////////////////////////////////////////////////////////////
 export class Loading extends Phaser.Scene{
@@ -244,10 +152,12 @@ export class Loading extends Phaser.Scene{
     }
     preload()    
     { 
+
+        this.parseResources(this.cache.json.get('main_resources')); 
+        this.load.plugin('rexvirtualjoystickplugin', pluginUrl, true);
         
         this.loadingText = this.add.text(444, 260, "Loading Bluepoint ", {fontFamily: 'euroStyle', fontSize: 50}).setOrigin(0.5);
         this.loadingTween = this.tweens.add({targets: this.loadingText,alpha: 0, duration: 2000, ease: 'Sine.easeInOut', loop: -1, yoyo: true});
-        LOAD_MAIN(this); 
     }
     create()
     {
@@ -270,6 +180,55 @@ export class Loading extends Phaser.Scene{
         this.add.text(400, 432, 'START', {fontFamily: 'euroStyle', fontSize: 24, fontColor: 0x000000});
         this.add.zone(400, 432).setSize(380, 420).setInteractive().on('pointerdown', ()=> this.start());
     }
+
+//---------------------------------------- parse project from json asset resource file
+
+    parseResources(json)
+    { 
+    //images (png)
+        if (json.hasOwnProperty('image')) 
+        {
+            for (let key in json.image) 
+            {
+                let keys = Object.keys(json.image[key]).find(i => i); 
+                for (let value in json.image[key]) 
+                {
+                    let values = json.image[key][value];
+                    this.load.image(keys, values); 
+                }
+            }
+        }
+    //audio (mp3)
+        if (json.hasOwnProperty('audio')) 
+        {
+            for (let key in json.audio) 
+            {
+                let keys = Object.keys(json.audio[key]).find(i => i); 
+                for (let value in json.audio[key]) 
+                {
+                    let values = json.audio[key][value];
+                    this.load.audio(keys, values); 
+                }
+            }
+        }
+    //spritesheet
+        if (json.hasOwnProperty('spritesheet'))
+        {
+            for (let key in json.spritesheet) 
+            {
+                let keys = Object.keys(json.spritesheet[key]).find(i => i);
+                for (let key2 in json.spritesheet[key]) 
+                {
+                    let img = json.spritesheet[key][key2][0],
+                        data = json.spritesheet[key][key2][1];
+                    this.load.spritesheet(keys, img, {frameWidth: data.frameWidth, frameHeight: data.frameHeight}); 
+                }
+            }
+        }
+    }
+
+    //------------------------------------------ init game
+
     start()
     {
         this.game.sound.stopAll();

@@ -22,6 +22,7 @@ export function Dialog(entity, discussion, scene)
                     {
                         if (j === false) return;
                         if (
+                            discussion.Adam === true &&
                             discussion.Ryan === true && 
                             discussion.Sean === true && 
                             discussion.Nora === true && 
@@ -46,6 +47,13 @@ export function Dialog(entity, discussion, scene)
                         });
                     }
                 }
+                break;
+                case 'Adam':   
+                    if (discussion.Adam === true) this.discussion('Adam'); 
+                    this.glow = scene.scene.get('Main').npcGlow.filter(i => {
+                        if (i.data.list.name === 'Adam') 
+                            i.setVisible(false);  
+                    });
                 break;
                 case 'Ryan':   
                     if (discussion.Krissy === true) this.discussion('Ryan'); 

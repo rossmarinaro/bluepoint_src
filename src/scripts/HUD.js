@@ -1,7 +1,7 @@
 import { Entity } from './objects.js';
 import { createSocialMediaMenu } from './socialMedia.js';
 import { Controller } from './controls.js';
-import { GameObjects } from 'phaser';
+
 
 export class HUD extends Phaser.Scene{
     constructor(){
@@ -280,7 +280,7 @@ export class HUD extends Phaser.Scene{
             buttons.push(button);
         });
         //-------------hamburger icon
-        // scene.hamburguer = scene.add.image(830, 40, "hambugerIcon").setScale(0.4).setInteractive();
+        // scene.hamburguer = scene.add.image(830, 40, "hamburgerIcon").setScale(0.4).setInteractive();
         // scene.hamburguer.on('pointerover', () => scene.hamburguer.setScale(0.45));
         // scene.hamburguer.on('pointerout', () => scene.hamburguer.setScale(0.4));
         // scene.hamburguer.on('pointerdown', () => {
@@ -359,6 +359,7 @@ export class HUD extends Phaser.Scene{
         this.discussion = npcName => {
             switch(npcName)
             {
+                case 'Adam': Entity.NPC.discussions.Adam = true; break;
                 case 'Ryan': Entity.NPC.discussions.Ryan = true; break;
                 case 'Sean': Entity.NPC.discussions.Sean = true; break;
                 case 'Nora': Entity.NPC.discussions.Nora = true; break;
@@ -376,7 +377,8 @@ export class HUD extends Phaser.Scene{
                 Entity.NPC.discussions.Dave === true && 
                 Entity.NPC.discussions.Eric === true && 
                 Entity.NPC.discussions.Luke === true &&
-                Entity.NPC.discussions.Benny === true
+                Entity.NPC.discussions.Benny === true &&
+                Entity.NPC.discussions.Adam === true
             )
             {
                 this.scene.get('Main').npcGlow.filter(i => {

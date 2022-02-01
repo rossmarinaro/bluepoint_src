@@ -141,6 +141,7 @@ export function loadAnimationsPlayer (scene)
     scene.anims.create({key: "idleGuitarist", repeat: -1, frameRate: 5, frames: scene.anims.generateFrameNumbers('NPC1', {frames: [154, 155, 156]})});
     scene.anims.create({key: "idleDrummer", repeat: -1, frameRate: 5, frames: scene.anims.generateFrameNumbers('NPC1', {frames: [165, 166]})});
     ////
+    scene.anims.create({key: "idleAdam", repeat: -1, frameRate: 3, frames: scene.anims.generateFrameNumbers('adam_sprites', {start: 5, end: 8})});
     scene.anims.create({key: "idleRyan", repeat: -1, frameRate: 1, frames: scene.anims.generateFrameNumbers('NPC2', {start: 5, end: 8})});
     scene.anims.create({key: "idleBecca", repeat: -1, frameRate: 5, frames: scene.anims.generateFrameNumbers('NPC2', {start: 14, end: 17})});
     scene.anims.create({key: "idleSean", repeat: -1, frameRate: 5, frames: scene.anims.generateFrameNumbers('NPC2', {start: 77, end: 80})});

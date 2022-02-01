@@ -1,7 +1,8 @@
 import '../styles/styles.css';
 import Phaser from 'phaser';
 
-import { Loading } from './loading.js';
+
+import { Boot, Loading } from './loading.js';
 import { Main } from './main.js';
 import { HUD } from './HUD.js';
 import { Controller } from './controls.js';
@@ -12,7 +13,7 @@ const config = {
 		parent : 'gameContainer',
 		autoCenter: Phaser.Scale.CENTER_BOTH,	
 		width: 888, 
-		height: 520
+		height: 580
 	},
 	dom: {
         createContainer: true
@@ -28,7 +29,7 @@ const config = {
 	backgroundColor: 0x000000,
 	pixelArt: true,
 	type: Phaser.CANVAS,
-	scene: [ Loading, Main, HUD ],
+	scene: [ Boot, Loading, Main, HUD ],
 	initialTime: 10,
 	transparent: true,
 	gameState: false,
