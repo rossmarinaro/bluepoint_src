@@ -29,7 +29,10 @@ export const Controller = {
         this.WKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     //// ------------------------ interact callback
         this.interact = () =>{ 
-            if (!config.default.showingDialogue) hud.interact(player);
+            if (this.buttonInteract.visible === false)
+                return;
+            if (!config.default.showingDialogue) 
+                hud.dialog.interact(player);
             else if (!config.default.controls.buttonsLocked) 
             {
                 if (hud.textDialogue.text !== hud.messageToShow) 
@@ -37,7 +40,8 @@ export const Controller = {
                     hud.textDialogue.text = hud.messageToShow;
                     if (hud.eventTyping !== undefined) hud.eventTyping.remove(false);
                 } 
-                else hud.hideDialogue();
+                else
+                    hud.dialog.hideDialogue();
             }
         }
     //// ------------------------- Button interact

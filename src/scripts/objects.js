@@ -1,10 +1,10 @@
 /* ENTITIES */
 import { loadAnimationsPlayer } from './anims.js';
 import { Controller } from './controls.js';
-import { Dialog } from './dialog.js';
+
 
 export const Entity = {
-    dialog: Dialog,
+
     NPCS: [],
     player: {
         init: function(scene, x, y, poly)
@@ -18,6 +18,7 @@ export const Entity = {
             this.poly = poly;
             this.avatar = scene.add.sprite(x, y, "blueGuy", 0).play("idleDownBlue");
             this.avatar.depth = this.avatar.y;
+ 
         },
         ////move player
         move: (player, params) => {
@@ -206,7 +207,7 @@ export const Entity = {
             {
                 Entity.NPCS[npc].avatar.setInteractive().on('pointerdown', ()=> { 
                     if (!config.default.showingDialogue) 
-                        scene.scene.get('HUD').interact(scene.player);
+                        scene.scene.get('HUD').dialog.interact(scene.player);
                 });
             }
         }
